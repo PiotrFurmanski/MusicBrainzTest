@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Map View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="MapViewController" customModule="MusicBrainz" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="RBB-EJ-PUT">
+                                <rect key="frame" x="0.0" y="179" width="414" height="717"/>
+                            </mapView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uI8-nT-Tlp">
+                                <rect key="frame" x="82" y="81" width="250" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="BoY-mj-ox9"/>
+                                    <constraint firstAttribute="width" constant="250" id="GxZ-Gl-RVB"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="uI8-nT-Tlp" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2RB-Xk-lxy"/>
+                            <constraint firstItem="RBB-EJ-PUT" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.8" id="8Cs-bS-BJj"/>
+                            <constraint firstItem="RBB-EJ-PUT" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="CDm-0s-RMk"/>
+                            <constraint firstItem="RBB-EJ-PUT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Fjr-Sv-mhB"/>
+                            <constraint firstItem="RBB-EJ-PUT" firstAttribute="top" secondItem="uI8-nT-Tlp" secondAttribute="bottom" constant="68" id="Lgk-RI-D1Y"/>
+                            <constraint firstAttribute="bottom" secondItem="RBB-EJ-PUT" secondAttribute="bottom" id="Sx5-x0-7bO"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="RBB-EJ-PUT" id="tLR-B2-MDE"/>
+                        <outlet property="textField" destination="uI8-nT-Tlp" id="QCt-nO-i2l"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="131.8840579710145" y="138.61607142857142"/>
+        </scene>
+    </scenes>
+</document>
