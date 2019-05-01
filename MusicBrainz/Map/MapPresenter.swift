@@ -37,6 +37,10 @@ class MapPresenter {
         }
     }
     
+    func attach(view: MapView) {
+        mapView = view
+    }
+    
     func loadData(for place: String, completion: (() -> ())? = nil) {
         places = [Place]()
         DispatchQueue.global(qos: .background).async { [weak self] in
@@ -91,9 +95,5 @@ class MapPresenter {
         }
         
         mapView?.centerCamera(on: placeMarks.last)
-    }
-    
-    func attach(view: MapView) {
-        mapView = view
     }
 }

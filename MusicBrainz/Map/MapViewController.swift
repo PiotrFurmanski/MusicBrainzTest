@@ -18,14 +18,9 @@ class MapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        mapView.delegate = self
         textField.delegate = self
         presenter.attach(view: self)
     }
-    
-}
-
-extension MapViewController: MKMapViewDelegate {
     
 }
 

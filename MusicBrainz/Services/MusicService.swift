@@ -31,7 +31,7 @@ class MusicService: MusicServiceProtocol {
         task.resume()
     }
     
-    func handleResponse(data: Data?, response: URLResponse?, error: Error?,
+    private func handleResponse(data: Data?, response: URLResponse?, error: Error?,
                         completion: @escaping (_ placeResponse: PlaceResponse?, _ error: Error?) -> ()) {
         guard error == nil else {
             completion(nil, error)
