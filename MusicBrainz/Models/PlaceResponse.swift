@@ -9,5 +9,7 @@
 import Foundation
 
 struct PlaceResponse: Codable {
+    var count: Int
+    var offset: Int
     var places: [Place]
 }

@@ -9,28 +9,62 @@
 import Foundation
 
 protocol MapView: class {
-
     func show(mark: PlaceMark)
 }
 
 class MapPresenter {
-    private let musicService: MusicService
+    private struct Constants {
+        static let limit = 20
+    }
+    
+    var placeMarks = [PlaceMark]()
+    
+    private let musicService: MusicServiceProtocol
     private weak var mapView: MapView?
     
-    init(service: MusicService) {
+    
+    init(service: MusicServiceProtocol) {
         musicService = service
     }
     
     func loadData(for place: String) {
         DispatchQueue.global(qos: .background).async { [weak self] in
-            self?.musicService.loadData(for: place) { (placeResponse, error) in
-                DispatchQueue.main.async {
-                    guard let places = placeResponse?.places else { return }
-                    for place in places {
-                        if let mark = PlaceMark(place: place) {
-                            self?.mapView?.show(mark: mark)
+            var offset = 0
+            let downloadGroup = DispatchGroup()
+            downloadGroup.enter()
+            self?.musicService.loadData(for: place, limit: Constants.limit,
+                                        offset: offset) { [weak self] (placeResponse, error) in
+                guard let strongSelf = self, let placeResponse = placeResponse else {
+                    downloadGroup.leave()
+                    return
+                }
+                                            
+                let placeMarks = placeResponse.places.compactMap({ PlaceMark(place: $0) })
+                strongSelf.placeMarks.append(contentsOf: placeMarks)
+                
+                while placeResponse.count > Constants.limit * (offset + 1) {
+                    downloadGroup.enter()
+                    offset += 1
+                    strongSelf.musicService.loadData(for: place,
+                                                     limit: Constants.limit,
+                                                     offset: offset) { [weak self] (placeResponse, error) in
+                                                        
+                        guard let strongSelf = self, let placeResponse = placeResponse else {
+                            downloadGroup.leave()
+                            return
                         }
+                                                        
+                        let placeMarks = placeResponse.places.compactMap({ PlaceMark(place: $0) })
+                        strongSelf.placeMarks.append(contentsOf: placeMarks)
+                        downloadGroup.leave()
                     }
+                }
+                downloadGroup.leave()
+            }
+            downloadGroup.notify(queue: DispatchQueue.main) { [weak self] in
+                guard let strongSelf = self else { return }
+                for mark in strongSelf.placeMarks {
+                    strongSelf.mapView?.show(mark: mark)
                 }
             }
         }

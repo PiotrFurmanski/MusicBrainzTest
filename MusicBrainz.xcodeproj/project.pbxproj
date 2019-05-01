@@ -13,12 +13,13 @@
 		6F83C17F22777C220061F28B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F83C17E22777C220061F28B /* Assets.xcassets */; };
 		6F83C18222777C220061F28B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F83C18022777C220061F28B /* LaunchScreen.storyboard */; };
 		6F83C18D22777C220061F28B /* MusicBrainzTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F83C18C22777C220061F28B /* MusicBrainzTests.swift */; };
-		6F83C19822777C230061F28B /* MusicBrainzUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F83C19722777C230061F28B /* MusicBrainzUITests.swift */; };
 		6F83C1A722777C840061F28B /* MusicService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F83C1A622777C840061F28B /* MusicService.swift */; };
 		6F83C1A922777D610061F28B /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F83C1A822777D610061F28B /* Place.swift */; };
 		6F83C1AB22777E310061F28B /* PlaceResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F83C1AA22777E310061F28B /* PlaceResponse.swift */; };
 		6F83C1AD227789710061F28B /* MapPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F83C1AC227789710061F28B /* MapPresenter.swift */; };
 		6F83C1AF227798170061F28B /* PlaceMark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F83C1AE227798170061F28B /* PlaceMark.swift */; };
+		6FC209412279D20200AF8DB3 /* Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC209402279D20200AF8DB3 /* Coordinates.swift */; };
+		6FC209432279D21700AF8DB3 /* LifeSpan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC209422279D21700AF8DB3 /* LifeSpan.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,13 +51,13 @@
 		6F83C18C22777C220061F28B /* MusicBrainzTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicBrainzTests.swift; sourceTree = "<group>"; };
 		6F83C18E22777C220061F28B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6F83C19322777C230061F28B /* MusicBrainzUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MusicBrainzUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		6F83C19722777C230061F28B /* MusicBrainzUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicBrainzUITests.swift; sourceTree = "<group>"; };
-		6F83C19922777C230061F28B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6F83C1A622777C840061F28B /* MusicService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicService.swift; sourceTree = "<group>"; };
 		6F83C1A822777D610061F28B /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		6F83C1AA22777E310061F28B /* PlaceResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceResponse.swift; sourceTree = "<group>"; };
 		6F83C1AC227789710061F28B /* MapPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPresenter.swift; sourceTree = "<group>"; };
 		6F83C1AE227798170061F28B /* PlaceMark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceMark.swift; sourceTree = "<group>"; };
+		6FC209402279D20200AF8DB3 /* Coordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinates.swift; sourceTree = "<group>"; };
+		6FC209422279D21700AF8DB3 /* LifeSpan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeSpan.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,7 +90,6 @@
 			children = (
 				6F83C17622777C200061F28B /* MusicBrainz */,
 				6F83C18B22777C220061F28B /* MusicBrainzTests */,
-				6F83C19622777C230061F28B /* MusicBrainzUITests */,
 				6F83C17522777C200061F28B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -107,6 +107,7 @@
 		6F83C17622777C200061F28B /* MusicBrainz */ = {
 			isa = PBXGroup;
 			children = (
+				6FC2093F2279D1DE00AF8DB3 /* Models */,
 				6F83C1A522777C6E0061F28B /* Services */,
 				6F83C17722777C200061F28B /* AppDelegate.swift */,
 				6F83C17922777C200061F28B /* MapViewController.swift */,
@@ -114,8 +115,6 @@
 				6F83C17E22777C220061F28B /* Assets.xcassets */,
 				6F83C18022777C220061F28B /* LaunchScreen.storyboard */,
 				6F83C18322777C220061F28B /* Info.plist */,
-				6F83C1A822777D610061F28B /* Place.swift */,
-				6F83C1AA22777E310061F28B /* PlaceResponse.swift */,
 				6F83C1AC227789710061F28B /* MapPresenter.swift */,
 				6F83C1AE227798170061F28B /* PlaceMark.swift */,
 			);
@@ -131,21 +130,23 @@
 			path = MusicBrainzTests;
 			sourceTree = "<group>";
 		};
-		6F83C19622777C230061F28B /* MusicBrainzUITests */ = {
-			isa = PBXGroup;
-			children = (
-				6F83C19722777C230061F28B /* MusicBrainzUITests.swift */,
-				6F83C19922777C230061F28B /* Info.plist */,
-			);
-			path = MusicBrainzUITests;
-			sourceTree = "<group>";
-		};
 		6F83C1A522777C6E0061F28B /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				6F83C1A622777C840061F28B /* MusicService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		6FC2093F2279D1DE00AF8DB3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6F83C1A822777D610061F28B /* Place.swift */,
+				6FC209402279D20200AF8DB3 /* Coordinates.swift */,
+				6FC209422279D21700AF8DB3 /* LifeSpan.swift */,
+				6F83C1AA22777E310061F28B /* PlaceResponse.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -285,7 +286,9 @@
 				6F83C1A722777C840061F28B /* MusicService.swift in Sources */,
 				6F83C17822777C200061F28B /* AppDelegate.swift in Sources */,
 				6F83C1A922777D610061F28B /* Place.swift in Sources */,
+				6FC209432279D21700AF8DB3 /* LifeSpan.swift in Sources */,
 				6F83C1AD227789710061F28B /* MapPresenter.swift in Sources */,
+				6FC209412279D20200AF8DB3 /* Coordinates.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,7 +304,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6F83C19822777C230061F28B /* MusicBrainzUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

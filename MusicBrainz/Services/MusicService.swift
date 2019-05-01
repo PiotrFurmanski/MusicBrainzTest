@@ -8,14 +8,21 @@
 
 import Foundation
 
-class MusicService {
+protocol MusicServiceProtocol: class {
+    func loadData(for place: String, limit: Int, offset: Int,
+                  completion: @escaping (_ placeResponse: PlaceResponse?, _ error: Error?) -> ())
+}
+
+class MusicService: MusicServiceProtocol {
     
-    private struct Constant {
-        static let accesKey = "a23267780d72bb4bf4da78d79eb3d80e"
+    private struct Constants {
+        static let limit = "limit"
+        static let offset = "offset"
     }
     
-    func loadData(for place: String, completion: @escaping (_ placeResponse: PlaceResponse?, _ error: Error?) -> ()) {
-        let apiUrlStr = "http://musicbrainz.org/ws/2/place/?query=\(place)&fmt=json"
+    func loadData(for place: String, limit: Int, offset: Int,
+                  completion: @escaping (_ placeResponse: PlaceResponse?, _ error: Error?) -> ()) {
+        let apiUrlStr = "http://musicbrainz.org/ws/2/place/?query=\(place)&\(Constants.limit)=\(limit)&\(Constants.offset)=\(offset)&fmt=json"
         guard let url = URL(string: apiUrlStr) else { return }
         
         let task = URLSession.shared.dataTask(with: url) { [weak self] (data, response, error) in

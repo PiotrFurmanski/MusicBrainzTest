@@ -8,17 +8,6 @@
 
 import Foundation
 
-struct Coordinates: Codable {
-    var latitude: String
-    var longitude: String
-}
-
-struct LifeSpan: Codable {
-    var begin: String?
-    var end: String?
-    var ended: Bool?
-}
-
 struct Place: Codable {
     var type: String?
     var name: String?
