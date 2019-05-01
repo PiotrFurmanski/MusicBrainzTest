@@ -18,6 +18,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j2x-0R-yPY">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="179"/>
+                                <color key="backgroundColor" red="0.3411764706" green="0.83529411760000005" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="RBB-EJ-PUT">
                                 <rect key="frame" x="0.0" y="179" width="414" height="717"/>
                             </mapView>
@@ -28,7 +32,7 @@
                                     <constraint firstAttribute="width" constant="250" id="GxZ-Gl-RVB"/>
                                 </constraints>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
@@ -38,8 +42,12 @@
                             <constraint firstItem="RBB-EJ-PUT" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.8" id="8Cs-bS-BJj"/>
                             <constraint firstItem="RBB-EJ-PUT" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="CDm-0s-RMk"/>
                             <constraint firstItem="RBB-EJ-PUT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Fjr-Sv-mhB"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="j2x-0R-yPY" secondAttribute="trailing" id="IXh-Qx-Rm5"/>
+                            <constraint firstItem="RBB-EJ-PUT" firstAttribute="top" secondItem="j2x-0R-yPY" secondAttribute="bottom" id="J0K-eO-Spd"/>
                             <constraint firstItem="RBB-EJ-PUT" firstAttribute="top" secondItem="uI8-nT-Tlp" secondAttribute="bottom" constant="68" id="Lgk-RI-D1Y"/>
                             <constraint firstAttribute="bottom" secondItem="RBB-EJ-PUT" secondAttribute="bottom" id="Sx5-x0-7bO"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="j2x-0R-yPY" secondAttribute="top" constant="44" id="Vbj-er-yq2"/>
+                            <constraint firstItem="j2x-0R-yPY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="lz0-0p-69d"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

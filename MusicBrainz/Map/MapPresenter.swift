@@ -37,7 +37,7 @@ class MapPresenter {
         }
     }
     
-    func loadData(for place: String) {
+    func loadData(for place: String, completion: (() -> ())? = nil) {
         places = [Place]()
         DispatchQueue.global(qos: .background).async { [weak self] in
             var offset = 0
@@ -72,6 +72,7 @@ class MapPresenter {
             }
             downloadGroup.notify(queue: DispatchQueue.main) { [weak self] in
                 self?.addFilteredMarks()
+                completion?()
             }
         }
     }
