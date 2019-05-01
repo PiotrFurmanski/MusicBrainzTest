@@ -10,14 +10,17 @@ import Foundation
 
 protocol MapView: class {
     func show(mark: PlaceMark)
+    func centerCamera(on mark: PlaceMark?)
 }
 
 class MapPresenter {
     private struct Constants {
         static let limit = 20
+        static let year = 1990
     }
     
     var placeMarks = [PlaceMark]()
+    var places = [Place]()
     
     private let musicService: MusicServiceProtocol
     private weak var mapView: MapView?
@@ -27,7 +30,15 @@ class MapPresenter {
         musicService = service
     }
     
+    func remove(mark: PlaceMark) {
+        placeMarks = placeMarks.filter {
+            return $0.coordinate.latitude != mark.coordinate.latitude ||
+                $0.coordinate.longitude != mark.coordinate.longitude
+        }
+    }
+    
     func loadData(for place: String) {
+        places = [Place]()
         DispatchQueue.global(qos: .background).async { [weak self] in
             var offset = 0
             let downloadGroup = DispatchGroup()
@@ -39,8 +50,7 @@ class MapPresenter {
                     return
                 }
                                             
-                let placeMarks = placeResponse.places.compactMap({ PlaceMark(place: $0) })
-                strongSelf.placeMarks.append(contentsOf: placeMarks)
+                strongSelf.places.append(contentsOf: placeResponse.places)
                 
                 while placeResponse.count > Constants.limit * (offset + 1) {
                     downloadGroup.enter()
@@ -53,21 +63,33 @@ class MapPresenter {
                             downloadGroup.leave()
                             return
                         }
-                                                        
-                        let placeMarks = placeResponse.places.compactMap({ PlaceMark(place: $0) })
-                        strongSelf.placeMarks.append(contentsOf: placeMarks)
+                        
+                        strongSelf.places.append(contentsOf: placeResponse.places)
                         downloadGroup.leave()
                     }
                 }
                 downloadGroup.leave()
             }
             downloadGroup.notify(queue: DispatchQueue.main) { [weak self] in
-                guard let strongSelf = self else { return }
-                for mark in strongSelf.placeMarks {
-                    strongSelf.mapView?.show(mark: mark)
-                }
+                self?.addFilteredMarks()
             }
         }
+    }
+    
+    private func addFilteredMarks() {
+        let filteredPlaces = places.filter {
+            guard let begin = $0.lifeSpan?.begin, let beginInt = Int(String(begin.prefix(4))) else { return false }
+            return beginInt >= Constants.year
+        }
+    
+        let filteredPlaceMarks = filteredPlaces.compactMap({ PlaceMark(place: $0) })
+        placeMarks.append(contentsOf: filteredPlaceMarks)
+        
+        for mark in filteredPlaceMarks {
+            mapView?.show(mark: mark)
+        }
+        
+        mapView?.centerCamera(on: placeMarks.last)
     }
     
     func attach(view: MapView) {

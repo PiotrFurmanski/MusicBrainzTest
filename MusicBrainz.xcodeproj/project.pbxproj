@@ -107,16 +107,14 @@
 		6F83C17622777C200061F28B /* MusicBrainz */ = {
 			isa = PBXGroup;
 			children = (
+				6FC209442279F8E300AF8DB3 /* Map */,
 				6FC2093F2279D1DE00AF8DB3 /* Models */,
 				6F83C1A522777C6E0061F28B /* Services */,
 				6F83C17722777C200061F28B /* AppDelegate.swift */,
-				6F83C17922777C200061F28B /* MapViewController.swift */,
 				6F83C17B22777C200061F28B /* Main.storyboard */,
 				6F83C17E22777C220061F28B /* Assets.xcassets */,
 				6F83C18022777C220061F28B /* LaunchScreen.storyboard */,
 				6F83C18322777C220061F28B /* Info.plist */,
-				6F83C1AC227789710061F28B /* MapPresenter.swift */,
-				6F83C1AE227798170061F28B /* PlaceMark.swift */,
 			);
 			path = MusicBrainz;
 			sourceTree = "<group>";
@@ -147,6 +145,16 @@
 				6F83C1AA22777E310061F28B /* PlaceResponse.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		6FC209442279F8E300AF8DB3 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				6F83C17922777C200061F28B /* MapViewController.swift */,
+				6F83C1AE227798170061F28B /* PlaceMark.swift */,
+				6F83C1AC227789710061F28B /* MapPresenter.swift */,
+			);
+			path = Map;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

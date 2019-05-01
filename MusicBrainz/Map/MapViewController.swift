@@ -41,10 +41,24 @@ extension MapViewController: UITextFieldDelegate {
 }
 
 extension MapViewController: MapView {
+    
+    func centerCamera(on mark: PlaceMark?) {
+        if let mark = mark {
+            mapView.setCenter(mark.coordinate, animated: true)
+        }
+    }
+    
     func show(mark: PlaceMark) {
+        mark.delegate = self
         mapView.addAnnotation(mark)
-        mapView.setCenter(mark.coordinate, animated: true)
+        mark.startLife()
     }
     
 }
 
+extension MapViewController: PlaceMarkProtocol {
+    func remove(mark: PlaceMark) {
+        mapView.removeAnnotation(mark)
+        presenter.remove(mark: mark)
+    }
+}
