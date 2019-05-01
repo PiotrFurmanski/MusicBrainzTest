@@ -45,7 +45,7 @@ class MapPresenter {
             downloadGroup.enter()
             self?.musicService.loadData(for: place, limit: Constants.limit,
                                         offset: offset) { [weak self] (placeResponse, error) in
-                guard let strongSelf = self, let placeResponse = placeResponse else {
+                guard let strongSelf = self, let placeResponse = placeResponse, error == nil else {
                     downloadGroup.leave()
                     return
                 }
@@ -59,7 +59,7 @@ class MapPresenter {
                                                      limit: Constants.limit,
                                                      offset: offset) { [weak self] (placeResponse, error) in
                                                         
-                        guard let strongSelf = self, let placeResponse = placeResponse else {
+                        guard let strongSelf = self, let placeResponse = placeResponse, error == nil else {
                             downloadGroup.leave()
                             return
                         }

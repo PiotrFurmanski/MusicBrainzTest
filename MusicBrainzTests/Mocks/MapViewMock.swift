@@ -18,6 +18,7 @@ class MapViewMock: MapView {
     }
     
     func centerCamera(on mark: PlaceMark?) {
+        guard let _ = mark else { return }
         centerNumber += 1
     }
 }

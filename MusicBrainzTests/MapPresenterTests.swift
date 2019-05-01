@@ -15,7 +15,7 @@ class MapPresenterTests: XCTestCase {
         super.setUp()
     }
     
-    func testShouldSetTwoMarks() {
+    func testShouldSetTwoMarksWhenGotFiveLocationsWithProperTwo() {
         
         let expect = expectation(description: "Waiting response")
         let mapView = MapViewMock()
@@ -30,6 +30,23 @@ class MapPresenterTests: XCTestCase {
 
         XCTAssertEqual(mapView.numberOfMarks, 2)
         XCTAssertEqual(mapView.centerNumber, 1)
+    }
+    
+    func testShouldSetZeroMarksWhenErrorOccurs() {
+        
+        let expect = expectation(description: "Waiting response")
+        let mapView = MapViewMock()
+        let mapPresenterUnderTest = MapPresenter(service: MusicServiceWrongMock())
+        mapPresenterUnderTest.attach(view: mapView)
+        
+        mapPresenterUnderTest.loadData(for: "warszawa") {
+            expect.fulfill()
+        }
+        
+        waitForExpectations(timeout: 5, handler: nil)
+        
+        XCTAssertEqual(mapView.numberOfMarks, 0)
+        XCTAssertEqual(mapView.centerNumber, 0)
     }
     
     func testShouldProperlyRemoveMark() {
